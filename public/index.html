@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Fetch Dashboard</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
+        margin: 0;
+        padding: 2rem;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h1 {
+        color: #ffffff;
+        border-bottom: 1px solid #333;
+        padding-bottom: 10px;
+      }
+      .controls {
+        margin: 20px 0;
+        display: flex;
+        gap: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      #startBtn {
+        background-color: #4caf50;
+        color: white;
+      }
+      #stopBtn {
+        background-color: #f44336;
+        color: white;
+      }
+      .terminal {
+        background-color: #1e1e1e;
+        border-radius: 8px;
+        padding: 1rem;
+        height: 500px;
+        overflow-y: auto;
+        font-family: "Courier New", Courier, monospace;
+        border: 1px solid #333;
+      }
+      .log-entry {
+        margin: 5px 0;
+        padding: 3px 0;
+        border-bottom: 1px solid #2a2a2a;
+      }
+      .info {
+        color: #64b5f6;
+      }
+      .success {
+        color: #81c784;
+      }
+      .error {
+        color: #e57373;
+      }
+      .warning {
+        color: #ffb74d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>API Fetch Monitor</h1>
+
+      <!-- NEW CONTROLS -->
+      <div class="controls">
+        <button id="startBtn" onclick="startTasks()">▶ Start Loop</button>
+        <button id="stopBtn" onclick="stopTasks()" disabled>⏹ Stop Loop</button>
+      </div>
+
+      <!-- NEW INPUT SECTION -->
+      <div class="controls" style="margin-top: 10px">
+        <input
+          type="number"
+          id="phoneInput"
+          placeholder="Enter Phone ID"
+          style="
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #333;
+            background: #1e1e1e;
+            color: white;
+          "
+        />
+        <button
+          onclick="updatePhone()"
+          style="background-color: #2196f3; color: white"
+        >
+          Set Phone ID
+        </button>
+      </div>
+
+      <div class="terminal" id="terminal">
+        <!-- Logs will appear here -->
+      </div>
+    </div>
+
+    <script>
+      const terminal = document.getElementById("terminal");
+      const startBtn = document.getElementById("startBtn");
+      const stopBtn = document.getElementById("stopBtn");
+
+      // Connect to the SSE stream from the backend
+      const eventSource = new EventSource("/stream");
+
+      eventSource.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+        const logElement = document.createElement("div");
+        logElement.className = `log-entry ${data.type}`;
+
+        const time = new Date().toLocaleTimeString();
+        logElement.textContent = `[${time}] ${data.message}`;
+
+        terminal.appendChild(logElement);
+        terminal.scrollTop = terminal.scrollHeight;
+      };
+
+      // API Calls for Start and Stop
+      async function startTasks() {
+        try {
+          await fetch("/start", { method: "POST" });
+          startBtn.disabled = true;
+          stopBtn.disabled = false;
+        } catch (error) {
+          console.error("Failed to start tasks", error);
+        }
+      }
+
+      async function stopTasks() {
+        try {
+          await fetch("/stop", { method: "POST" });
+          startBtn.disabled = false;
+          stopBtn.disabled = true;
+        } catch (error) {
+          console.error("Failed to stop tasks", error);
+        }
+      }
+      // New function to handle the input submission
+      async function updatePhone() {
+        const phoneInput = document.getElementById("phoneInput");
+        const phoneId = phoneInput.value;
+
+        if (!phoneId) {
+          alert("Please enter a valid Phone ID");
+          return;
+        }
+
+        try {
+          await fetch("/update-phone", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ phoneId: phoneId }),
+          });
+
+          // Optional: clear the input box after submission
+          phoneInput.value = "";
+        } catch (error) {
+          console.error("Failed to update phone ID", error);
+        }
+      }
+    </script>
+  </body>
+</html>
