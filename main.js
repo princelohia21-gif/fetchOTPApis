@@ -19,6 +19,8 @@ const {
   fetchShoopyWhatsapp,
   fetchProvilac,
   fetchNetaSampark,
+  fetchSnapdeal,
+  fetchDrlal,
 } = require("./apiServices.js");
 
 const app = express();
@@ -61,6 +63,8 @@ async function runStaggered() {
     fetchShoopyWhatsapp,
     fetchProvilac,
     fetchNetaSampark,
+    fetchSnapdeal,
+    fetchDrlal,
   ];
 
   const results = await Promise.allSettled(
